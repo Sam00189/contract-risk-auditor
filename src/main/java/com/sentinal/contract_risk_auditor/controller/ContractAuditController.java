@@ -50,7 +50,7 @@ public class ContractAuditController {
     public ResponseEntity<List<AuditFinding>> auditContractPdf(@RequestParam("file") MultipartFile file) throws IOException {
         String extractedText = pdfParserService.extractText(file);
         List<ContractChunk> chunks = textChunkerService.chunkContract(extractedText);
-        List<AuditFinding> findings = contractAuditService.auditChunks(chunks);
+        List<AuditFinding> findings = contractAuditService.auditContract(chunks);
         return ResponseEntity.ok(findings);
     }
 }
